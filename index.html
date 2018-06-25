@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <style>
+        .content {
+            width: 1000px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .btn-group {
+            margin-left: 20px;
+        }
+
+        .top {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content table-responsive">
+        <div class="top clearfix">
+            <form class="form-inline fl">
+                <select id="type" class="form-control">
+                    <option value="1" selected>按学校名查询</option>
+                    <option value="0">按成绩查询</option>
+                </select>
+                <input id="search-text" type="text" class="form-control" placeholder="请输入您要查找的学校">
+                <button id="select" class="btn">查询</button>
+            </form>
+            <div class="btn-group fl" role="group">
+                <button id="old" class="btn btn-success">2016</button>
+                <button id="new" class="btn btn-danger">2017</button>
+            </div>
+            <div id="show-text" class="fr">当前显示的是2017年的信息</div>
+        </div>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>
+                        <select id="subject" class="form-control">
+                            <option value="2" disabled selected>科类</option>
+                            <option value="1">文史</option>
+                            <option value="0">理工</option>
+                        </select>
+                    </th>
+                    <th>院校代号</th>
+                    <th>院校名称</th>
+                    <th>
+                        <select id="scores" class="form-control">
+                            <option value="2" disabled selected>投档线</option>
+                            <option value="1">升序</option>
+                            <option value="0">降序</option>
+                        </select>
+                    </th>
+                    <th>最低排名</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
