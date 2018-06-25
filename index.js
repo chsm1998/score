@@ -2419,4 +2419,5 @@ $("#select").click(function () {
         scoreUpdateView();
         subjectUpdateView();
     }
+    return false;
 })
