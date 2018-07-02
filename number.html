@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>在线算式生成</title>
+	<link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<style type="text/css">
+		.top {
+			width: 400px;
+			margin: 0 auto;
+			margin-top: 40px;
+		}
+
+		.value {
+			display: inline-block;
+			width: 100px;
+		}
+
+		#calculation > div {
+			display: flex;
+			align-items: center;
+			font-size: 28px;
+			height: 50px;
+			line-height: 50px;
+		}
+
+		.score {
+			font-size: 20px;
+		}
+
+		.scorev {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="top">
+		<div class="score">当前分数:<span class="scorev">0</span></div>
+		<form id="form">
+		  <div class="form-group">
+		    <label for="max">算式最大值：</label>
+		    <input id="max" type="number" class="form-control" placeholder="算式最大值">
+		  </div>
+		  <div class="form-group">
+		    <label for="num">生成数量：</label>
+		    <input id="num" type="number" class="form-control" placeholder="生成数量">
+		  </div>
+		  <button type="button" id="generator" class="btn btn-success btn-block">生成</button>
+		</form>
+		<div id="calculation"></div>
+	</div>
+	<script type="text/javascript">
+		class Calculation {
+			constructor(num1, num2, symbol, success) {
+			    this.num1 = num1
+			    this.num2 = num2
+			    this.symbol = symbol
+			    this.success = success
+			    this.value = 0
+			}
+		}
+		function generator(max, num) {
+			let arr = []
+			for (let i = 0; i < num; i++) {
+				let num1 = Math.floor(Math.random() * (max - 1)) + 1
+				let num2 = Math.floor(Math.random() * (max - num1)) + 1
+				let success = num1 + num2
+				let calculation = new Calculation(num1, num2, '+', success)
+				arr.push(calculation)
+			}
+			return arr
+		}
+		let sum = 0
+		$('#generator').click(function () {
+			sum = 0
+			let max = $('#max').val()
+			let num = $('#num').val()
+			let arr = generator(max, num)
+			let content = '';
+			for (let i = 0; i < arr.length; i++) {
+				content = content + `<div>
+				<span>` + arr[i].num1 + arr[i].symbol + arr[i].num2 + `= </span>
+				<input type="number" class="form-control value" placeholder="值">
+				<span></span>
+			</div>`
+			}
+			$('#calculation').html(content)
+			$('.value').blur(function () {
+				let index = $('.value').index(this)
+				let msg = $(this).next()
+				if ($(this).val() === '') {
+					return
+				}
+				$(this).attr('readonly', true)
+				if ($(this).val() == arr[index].success) {
+					sum++
+					$('.scorev').text(sum / num * 100)
+					console.log(msg)
+					msg.text('正确').css('color', 'green')
+				} else {
+					$('.scorev').text(sum / num * 100)
+					msg.text('错误').css('color', 'red')
+				}
+			})
+		})
+	</script>
+</body>
+</html>
