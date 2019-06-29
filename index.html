@@ -32,14 +32,49 @@
             margin-bottom: 20px;
         }
 
-        td, th {
+        td,
+        th {
             text-align: center;
             vertical-align: middle;
         }
 
         @media (max-width: 600px) {
             .content {
+                width: auto;
+                margin-top: 0;
+            }
+
+            .fl {
+                float: none
+            }
+
+            .fr {
+                float: none;
+            }
+
+            .form-inline {
                 width: 100%;
+            }
+
+            #search {
+                width: 100%;
+            }
+
+            .btn-group {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .btn-group>* {
+                width: 33.333%;
+            }
+
+            #show-text {
+                text-align: center;
+            }
+
+            .top>* {
+                margin: 5px 0;
             }
         }
     </style>
@@ -48,6 +83,7 @@
 <body>
     <div class="content">
         <div class="top clearfix">
+            <div id="show-text" class="fr">当前显示的是2018年的信息</div>
             <div class="form-inline fl">
                 <select id="type" class="form-control">
                     <option value="1" selected>按学校名查询</option>
@@ -57,11 +93,11 @@
                 <button id="search" class="btn">查询</button>
             </div>
             <div class="btn-group fl" role="group">
+                <!-- <button class="btn btn-info score">全部</button> -->
                 <button class="btn btn-success score">2016</button>
                 <button class="btn btn-danger score">2017</button>
-                <button class="btn btn-warn score">2018</button>
+                <button class="btn btn-primary score">2018</button>
             </div>
-            <div id="show-text" class="fr">当前显示的是2018年的信息</div>
         </div>
         <div class="table-responsive">
             <table class="table table-hover table-bordered">

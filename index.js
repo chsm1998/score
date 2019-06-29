@@ -3539,6 +3539,8 @@ let score18 = [
     ["1216", "理工", "9516", "南阳职业学院", "160", "192692"],
 ];
 
+let allScore;
+
 /**
  * 存储当前展示的信息
  */
@@ -3549,6 +3551,14 @@ let score = score18;
 let oldScore = score18;
 
 show(score);
+
+// function getAllScore() {
+//     let max = Math.max(score16.length, score17.length, score18.length);
+//     score16.sort((x, y) => x[3] - y[3])
+//     score17.sort((x, y) => x[3] - y[3])
+//     score18.sort((x, y) => x[3] - y[3])
+//     for (lei i = 0; i < Math.max())
+// }
 
 /**
  * 展示高校信息
