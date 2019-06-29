@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>Document</title>
+    <title>高校成绩查询</title>
     <style>
         .content {
             width: 1000px;
@@ -31,41 +31,54 @@
         .top {
             margin-bottom: 20px;
         }
+
+        td, th {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 600px) {
+            .content {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="content">
         <div class="top clearfix">
-            <form class="form-inline fl">
+            <div class="form-inline fl">
                 <select id="type" class="form-control">
                     <option value="1" selected>按学校名查询</option>
                     <option value="0">按成绩查询</option>
                 </select>
                 <input id="search-text" type="text" class="form-control" placeholder="请输入您要查找的学校">
-                <button id="select" class="btn">查询</button>
-            </form>
-            <div class="btn-group fl" role="group">
-                <button id="old" class="btn btn-success">2016</button>
-                <button id="new" class="btn btn-danger">2017</button>
+                <button id="search" class="btn">查询</button>
             </div>
-            <div id="show-text" class="fr">当前显示的是2017年的信息</div>
+            <div class="btn-group fl" role="group">
+                <button class="btn btn-success score">2016</button>
+                <button class="btn btn-danger score">2017</button>
+                <button class="btn btn-warn score">2018</button>
+            </div>
+            <div id="show-text" class="fr">当前显示的是2018年的信息</div>
         </div>
         <div class="table-responsive">
             <table class="table table-hover table-bordered">
                 <thead>
                     <tr>
                         <th>序号</th>
-                        <th>
+                        <th style="min-width: 100px">
                             <select id="subject" class="form-control">
                                 <option value="2" disabled selected>科类</option>
+                                <option value="3">全部</option>
                                 <option value="1">文史</option>
                                 <option value="0">理工</option>
                             </select>
                         </th>
                         <th>院校代号</th>
                         <th>院校名称</th>
-                        <th>
+                        <th style="min-width: 140px">
                             <select id="scores" class="form-control">
                                 <option value="2" disabled selected>投档线</option>
                                 <option value="1">升序</option>
@@ -76,7 +89,7 @@
                     </tr>
                 </thead>
                 <tbody>
-            
+
                 </tbody>
             </table>
         </div>
